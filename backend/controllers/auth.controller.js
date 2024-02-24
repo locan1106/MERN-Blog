@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/errorHandler.js";
 import jwt from "jsonwebtoken";
+import { removeVietnameseTones } from "../utils/removeVietnamesesTones.js";
 
 export const signUp = async (req, res, next) => {
 	const { username, email, password, confirmPassword } = req.body;
@@ -99,11 +100,16 @@ export const google = async (req, res, next) => {
 			const generatedPassword =
 				Math.random().toString(36).slice(-8) +
 				Math.random().toString(36).slice(-8);
+
 			const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
+
+			const newName = removeVietnameseTones(
+				name.toLowerCase().split(" ").join("") +
+					Math.random().toString(9).slice(-4)
+			);
+
 			const newUser = new User({
-				username:
-					name.toLowerCase().split(" ").join("") +
-					Math.random().toString(9).slice(-4),
+				username: newName,
 				email,
 				password: hashedPassword,
 				profilePicture: googlePhotoUrl,
