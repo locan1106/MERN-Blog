@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectMongoDB from "./database/connect.js";
+import cookieParser from "cookie-parser";
 
 // Routes
 import userRoutes from "./routes/user.route.js";
@@ -11,6 +12,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.listen(3000, () => {
 	connectMongoDB();
