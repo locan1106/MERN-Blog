@@ -8,6 +8,7 @@ import {
 	ref,
 	uploadBytesResumable,
 } from "firebase/storage";
+import { Link } from "react-router-dom";
 
 import {
 	updateStart,
@@ -259,6 +260,17 @@ const DashProfile = () => {
 						"Update"
 					)}
 				</Button>
+
+				{currentUser.isAdmin && (
+					<Link to="/create-post">
+						<Button
+							type="button"
+							gradientDuoTone="purpleToPink"
+							className="w-full">
+							Create a post
+						</Button>
+					</Link>
+				)}
 			</form>
 			<div className="text-red-500 flex justify-between mt-3">
 				<span
