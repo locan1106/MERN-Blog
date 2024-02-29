@@ -77,6 +77,7 @@ const DashProfile = () => {
 
 				setImageFileUploadProgress(progress.toFixed(0));
 			},
+			// eslint-disable-next-line no-unused-vars
 			(error) => {
 				setImageFileUploadError(
 					"Could not upload image (File must be less than 2MB)"

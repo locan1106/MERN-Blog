@@ -85,11 +85,21 @@ const FooterCom = () => {
 						year={new Date().getFullYear()}
 					/>
 					<div className="flex gap-6 sm:mt-0 mt-4 sm:justify-center">
-						<Footer.Icon href="#" icon={BsFacebook} />
-						<Footer.Icon href="#" icon={BsInstagram} />
-						<Footer.Icon href="#" icon={BsTwitter} />
-						<Footer.Icon href="https://github.com/locan1106" icon={BsGithub} />
-						<Footer.Icon href="#" icon={BsDribbble} />
+						<div className="transition-transform duration-300 hover:translate-y-[-8px] ease-in-out">
+							<Footer.Icon href="#" icon={BsFacebook} />
+						</div>
+						<div className="transition-transform duration-300 hover:translate-y-[-8px] ease-in-out">
+							<Footer.Icon href="#" icon={BsInstagram} />
+						</div>
+						<div className="transition-transform duration-300 hover:translate-y-[-8px] ease-in-out">
+							<Footer.Icon href="#" icon={BsTwitter} />
+						</div>
+						<div className="transition-transform duration-300 hover:translate-y-[-8px] ease-in-out">
+							<Footer.Icon href="#" icon={BsGithub} />
+						</div>
+						<div className="transition-transform duration-300 hover:translate-y-[-8px] ease-in-out">
+							<Footer.Icon href="#" icon={BsDribbble} />
+						</div>
 					</div>
 				</div>
 			</div>
