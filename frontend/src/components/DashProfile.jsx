@@ -250,7 +250,7 @@ const DashProfile = () => {
 					type="submit"
 					gradientDuoTone={"purpleToBlue"}
 					outline
-					disabled={loading}>
+					disabled={loading || imageFileUploading}>
 					{loading ? (
 						<>
 							<Spinner size={"sm"} />
