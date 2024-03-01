@@ -24,10 +24,10 @@ const Dashboard = () => {
 			</div>
 
 			{/* profile */}
-			<div className="flex-1">{tab === "profile" && <DashProfile />}</div>
+			{tab === "profile" && <DashProfile />}
 
 			{/* posts */}
-			<div className="flex-1">{tab === "posts" && <DashPost />}</div>
+			{tab === "posts" && <DashPost />}
 		</div>
 	);
 };
