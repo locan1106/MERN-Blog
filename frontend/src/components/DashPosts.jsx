@@ -5,12 +5,11 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const DashPosts = () => {
 	const { currentUser } = useSelector((state) => state.user);
+
 	const [posts, setPosts] = useState([]);
 	const [showMore, setShowMore] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [postIdToDelete, setPostIdToDelete] = useState("");
-
-	console.log(postIdToDelete);
 
 	useEffect(() => {
 		const fetchPosts = async () => {
@@ -74,11 +73,14 @@ const DashPosts = () => {
 				console.log(data.message);
 			} else {
 				setPosts((prev) => prev.filter((post) => post._id !== postIdToDelete));
+				setPostIdToDelete("");
 			}
 		} catch (error) {
 			console.log(error.message);
 		}
 	};
+
+	console.log(posts);
 
 	return (
 		<div className="w-full max-w-[1200px] md:mx-auto table-auto overflow-x-scroll p-3 scrollbar scrollbar-track-slate-300 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-500 dark:scrollbar-thumb-slate-700">
@@ -121,7 +123,7 @@ const DashPosts = () => {
 									</Table.Cell>
 									<Table.Cell>{post.category}</Table.Cell>
 									<Table.Cell>
-										<Link to={"/update-post/" + post.slug}>
+										<Link to={"/update-post/" + post._id}>
 											<span className="hover:underline text-teal-500">
 												Edit
 											</span>
