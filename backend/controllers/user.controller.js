@@ -2,10 +2,6 @@ import User from "../models/user.model.js";
 import { errorHandler } from "../utils/errorHandler.js";
 import bcryptjs from "bcryptjs";
 
-export const getUser = async (req, res) => {
-	res.json({ message: "Get all users" });
-};
-
 export const updateUser = async (req, res, next) => {
 	if (req.user.id !== req.params.id) {
 		return next(errorHandler(403, "You are not allowed to update"));
@@ -120,6 +116,17 @@ export const getUsers = async (req, res, next) => {
 		res
 			.status(200)
 			.json({ users: usersWithoutPass, totalUsers, lastMonthUsers });
+	} catch (error) {
+		next(error);
+	}
+};
+
+export const getUser = async (req, res, next) => {
+	try {
+		const user = await User.findById(req.params.userId);
+		const { password, ...rest } = user._doc;
+
+		res.status(200).json(rest);
 	} catch (error) {
 		next(error);
 	}
