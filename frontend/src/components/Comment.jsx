@@ -5,7 +5,7 @@ import { FaThumbsUp } from "react-icons/fa";
 import { Button, Textarea } from "flowbite-react";
 
 // eslint-disable-next-line react/prop-types
-const Comment = ({ comment, onLike, onEdit }) => {
+const Comment = ({ comment, onLike, onEdit, onDelete }) => {
 	const { currentUser } = useSelector((state) => state.user);
 
 	const [user, setUser] = useState({});
@@ -133,12 +133,22 @@ const Comment = ({ comment, onLike, onEdit }) => {
 							{currentUser &&
 								// eslint-disable-next-line react/prop-types
 								(currentUser._id === comment.userId || currentUser.isAdmin) && (
-									<button
-										type="button"
-										className="text-gray-400 hover:text-blue-500"
-										onClick={handleEdit}>
-										Edit
-									</button>
+									<div className="flex items-center gap-2">
+										<button
+											type="button"
+											className="text-gray-400 hover:text-blue-500"
+											onClick={handleEdit}>
+											Edit
+										</button>
+
+										<button
+											type="button"
+											className="text-gray-400 hover:text-red-500"
+											// eslint-disable-next-line react/prop-types
+											onClick={() => onDelete(comment._id)}>
+											Delete
+										</button>
+									</div>
 								)}
 						</div>
 					</>
