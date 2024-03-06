@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {
 	HiAnnotation,
 	HiArrowSmRight,
+	HiChartPie,
 	HiDocumentText,
 	HiOutlineUserGroup,
 	HiUser,
@@ -60,6 +61,15 @@ const DashSidebar = () => {
 					</Link>
 					{currentUser.isAdmin && (
 						<>
+							<Link to="/dashboard?tab=dash">
+								<Sidebar.Item
+									active={tab === "dash" || !tab}
+									icon={HiChartPie}
+									as="div">
+									Dashboard
+								</Sidebar.Item>
+							</Link>
+
 							<Link to={"/dashboard?tab=posts"}>
 								<Sidebar.Item
 									active={tab === "posts"}
