@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const PostCard = ({ post }) => {
 	return (
-		<div className="group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all">
+		<div className="group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg transition-all">
 			{/* eslint-disable-next-line react/prop-types */}
 			<Link to={`/post/${post.slug}`}>
 				<img
