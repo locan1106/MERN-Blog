@@ -10,7 +10,7 @@ import {
 const router = Router();
 
 router.post("/create", verifyToken, createPost);
-router.get("/get-posts", verifyToken, getPost);
+router.get("/get-posts", getPost);
 router.delete("/delete/:postId/:userId", verifyToken, deletePost);
 router.put("/update/:postId/:userId", verifyToken, updatePost);
 
